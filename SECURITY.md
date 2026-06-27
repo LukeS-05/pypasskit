@@ -5,7 +5,6 @@ Dropping security exploits in public issues gives malicious actors a heads-up be
 
 Instead, please report it privately through GitHub's secure form:
 1. Go to the **Security** tab at the top of this repository.
-2. Click on **Advisories** in the left sidebar.
-3. Click **Report a vulnerability** to submit the details to me privately. 
+2. Click **Report a vulnerability** to submit the details to me privately. 
 
 Thanks for helping keep the library secure!
