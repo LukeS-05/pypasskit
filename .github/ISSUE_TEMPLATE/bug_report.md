@@ -1,9 +1,10 @@
 ---
 name: Bug report
-about: Report a bug to help improve PyPassKit.
-title: '[BUG]: '
+about: If you've noticed a security vulnerability, DO NOT OPEN A PUBLIC ISSUE. Please
+  see the Security tab for more information.
+title: "[BUG]: "
 labels: bug
-assignees: ''
+assignees: LukeS-05
 
 ---
 
