@@ -1,6 +1,6 @@
 import secrets, string, math
 
-version = "1.0.0-b3"
+version = "0.6.0"
 
 __all__ = ["password", "passphrase"]
 
