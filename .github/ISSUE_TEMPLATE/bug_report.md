@@ -1,7 +1,6 @@
 ---
 name: Bug report
-about: If you've noticed a security vulnerability, DO NOT OPEN A PUBLIC ISSUE. Please
-  see the Security tab for more information.
+about: Report any bugs to help improve PyPassKit.
 title: "[BUG]: "
 labels: bug
 assignees: LukeS-05
