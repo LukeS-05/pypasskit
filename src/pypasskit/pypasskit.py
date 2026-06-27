@@ -16,7 +16,7 @@ def generatePool(upperletters=True, lowerletters=True, numbers=True, symbols=Tru
         characters += string.punctuation
     return characters
 
-def generatePassword(upperletters=True, lowerletters=True, numbers=True, symbols=True, length=10, entropy=False):
+def password(upperletters=True, lowerletters=True, numbers=True, symbols=True, length=10, entropy=False):
     # check data types
     if not(isinstance(upperletters, bool)) or not(isinstance(lowerletters, bool)) or not(isinstance(numbers, bool)) or not(isinstance(symbols, bool)):
         raise TypeError(f"Error 201 (passgenapi v{version}) - Configuration flags must be booleans.")
@@ -54,7 +54,7 @@ def generatePassword(upperletters=True, lowerletters=True, numbers=True, symbols
     else:
         return password
     
-def generatePassphrase(file, number=4, delimiter="-"):
+def passphrase(file, number=4, delimiter="-"):
     # open file and read the word on each line
     with open(file, "r") as f:
         words = f.read().splitlines()
