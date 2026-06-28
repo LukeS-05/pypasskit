@@ -1,6 +1,6 @@
 import secrets, string, math
 
-version = "0.6.0"
+version = "0.6.1"
 __all__ = ["generate", "buildPool", "entropy"]
 
 def buildPool(upper=True, lower=True, numbers=True, symbols=True):

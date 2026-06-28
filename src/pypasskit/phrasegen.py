@@ -1,6 +1,6 @@
 import secrets, math
 
-version = "0.6.0"
+version = "0.6.1"
 __all__ = ["generate","entropy"]
 
 def generate(file, number=4, delimiter="-"):
