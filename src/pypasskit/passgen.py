@@ -18,18 +18,18 @@ def buildPool(upper=True, lower=True, numbers=True, symbols=True):
 def generate(upper=True, lower=True, numbers=True, symbols=True, length=10):
     # check data types
     if not(isinstance(upper, bool)) or not(isinstance(lower, bool)) or not(isinstance(numbers, bool)) or not(isinstance(symbols, bool)):
-        raise TypeError(f"Error 201 (pypasskit v{version}) - Configuration flags must be booleans.")
+        raise TypeError(f"[201] (PPK v{version}) - Character pool config (e.g. upper) must be given as booleans.")
     if not(isinstance(length, int)):
-        raise TypeError(f"Error 202 (pypasskit v{version}) - Password length must be an integer.")
+        raise TypeError(f"[202] (PPK v{version}) - Password length must be given as an integer.")
     # generate char pool
     characters = buildPool(upper, lower, numbers, symbols)
     selected = sum([upper, lower, numbers, symbols])
     
     # check pass length and categories
     if length < selected:
-        raise ValueError(f"Error 203 (pypasskit v{version}) - Requested password length must accomodate at least one of each selected character category.")
+        raise ValueError(f"[203] (PPK v{version}) - Length must be greater than or equal to the number of character types selected ({selected}).")
     if selected == 0:
-        raise ValueError(f"Error 204 (pypasskit v{version}) - No character types selected. You must enable at least one pool category.")
+        raise ValueError(f"[204] (PPK v{version}) - You must select at least one type of character.")
     
     charslist = []
     # ensure that there is at least one of the characters from each category chosen
@@ -48,7 +48,7 @@ def generate(upper=True, lower=True, numbers=True, symbols=True, length=10):
     charslist = []
     # password entropy check
     return password
-    
+
 def entropy(pool="", length=0):
     entropy = length * math.log2(len(pool))
     return entropy

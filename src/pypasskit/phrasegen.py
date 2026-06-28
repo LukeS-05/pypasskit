@@ -5,8 +5,11 @@ __all__ = ["generate","entropy"]
 
 def generate(file, number=4, delimiter="-"):
     # open file and read the word on each line
-    with open(file, "r") as f:
-        words = f.read().splitlines()
+    try:
+        with open(file, "r") as f:
+            words = f.read().splitlines()
+    except FileNotFoundError as e:
+        raise FileNotFoundError(f"[211] (PPK v{version}) - File does not exist. - {e}")
     
     # remove blank lines
     words = [w for w in words if w.strip()]
@@ -23,8 +26,11 @@ def generate(file, number=4, delimiter="-"):
     return passphrase
 
 def entropy(file, chosen=0):
-    with open(file, "r") as f:
-        words = f.read().splitlines()
+    try:
+        with open(file, "r") as f:
+            words = f.read().splitlines()
+    except FileNotFoundError as e:
+        raise FileNotFoundError(f"[211] (PPK v{version}) - File does not exist. - {e}")
     
     # remove blank lines
     words = [w for w in words if w.strip()]
