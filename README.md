@@ -4,7 +4,7 @@ PyPassKit is a Python package which generates secure and customisable passwords 
 > [!NOTE]
 > This project has been built upon the core API of [my old password generator](https://github.com/LukeS-05/generate-password).
 >
-> Learn more at https://lukes-05.github.io/pypasskit
+> Learn more at https://lukes-05.github.io/pypasskit/pypasskit.html
 
 ## Features
 🔑 Generate cryptographically secure passwords with the secrets module.
