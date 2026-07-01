@@ -1,6 +1,6 @@
 import secrets
 
-version = "0.6.1"
+version = "0.7.0"
 def hexToken(numbytes=16):
     try:
         token = secrets.token_hex(numbytes)

@@ -1,7 +1,7 @@
 import secrets, string, math
 from . import passgen
 
-version = "0.6.1"
+version = "0.7.0"
 __all__ = ["generate", "entropy"]
 
 def generate(length=6):

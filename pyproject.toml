@@ -4,8 +4,9 @@ build-backend = "hatchling.build"
 
 [project]
 name = "pypasskit"
-version = "0.6.1"
+version = "0.7.0"
 description = ""
 readme = "README.md"
 requires-python = ">=3.8"
 dependencies = []
+authors = [{ name = "LukeS-05" }]
