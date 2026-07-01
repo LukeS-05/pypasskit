@@ -49,6 +49,20 @@ def generate(upper=True, lower=True, numbers=True, symbols=True, length=10):
     # password entropy check
     return password
 
-def entropy(pool="", length=0):
-    entropy = length * math.log2(len(pool))
+def entropy(upper=True, lower=True, numbers=True, symbols=True, length=0):
+    if not(isinstance(upper, bool)) or not(isinstance(lower, bool)) or not(isinstance(numbers, bool)) or not(isinstance(symbols, bool)):
+        raise TypeError(f"[205] (PPK v{version}) - Character pool config (e.g. upper) must be given as booleans.")
+    if not(isinstance(length, int)):
+        raise TypeError(f"[206] (PPK v{version}) - Password length must be given as an integer.")
+
+    # build pool
+    characters = buildPool(upper, lower, numbers, symbols)
+    selected = sum([upper, lower, numbers, symbols])
+    if length < selected:
+        raise ValueError(f"[207] (PPK v{version}) - Length must be greater than or equal to the number of character types selected ({selected}).")
+    if selected == 0:
+        raise ValueError(f"[208] (PPK v{version}) - You must select at least one type of character.")
+    
+    
+    entropy = length * math.log2(len(characters))
     return entropy

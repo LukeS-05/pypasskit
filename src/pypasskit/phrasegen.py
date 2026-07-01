@@ -30,7 +30,7 @@ def entropy(file, chosen=0):
         with open(file, "r") as f:
             words = f.read().splitlines()
     except FileNotFoundError as e:
-        raise FileNotFoundError(f"[211] (PPK v{version}) - File does not exist. - {e}")
+        raise FileNotFoundError(f"[219] (PPK v{version}) - File does not exist. - {e}")
     
     # remove blank lines
     words = [w for w in words if w.strip()]
