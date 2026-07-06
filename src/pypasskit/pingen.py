@@ -5,7 +5,7 @@ version = "0.7.0"
 __all__ = ["generate", "entropy"]
 
 def generate(length=6):
-    pincode= passgen.generate(upper=False, lower=False, numbers=True, symbols=False, length=length, returnPool=True)
+    pincode= passgen.generate(upper=False, lower=False, numbers=True, symbols=False, length=length, returnPool=False)
     return pincode
     
 def entropy(length=6):
