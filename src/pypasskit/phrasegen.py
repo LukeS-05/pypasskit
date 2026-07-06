@@ -3,38 +3,43 @@ import secrets, math
 version = "0.7.0"
 __all__ = ["generate","entropy"]
 
-def generate(file, number=4, delimiter="-"):
+def generate(file=None, wordlist=None, length=4, delimiter="-"):
     # open file and read the word on each line
-    try:
-        with open(file, "r") as f:
-            words = f.read().splitlines()
-    except FileNotFoundError as e:
-        raise FileNotFoundError(f"[211] (PPK v{version}) - File does not exist. - {e}")
-    
+    if file and wordlist: raise ValueError(f"[212] (phrasegen@PPK v{version} - You must pass EITHER file or wordlist as argument\nBoth have been passed.")
+    if not file and not wordlist: raise ValueError(f"[213] (phrasegen@PPK v{version} - You must pass EITHER file or wordlist as argument\nNeither has been passed.")
+    if file:
+        try:
+            with open(file, "r") as f:
+                words = f.read().splitlines()
+        except FileNotFoundError as e:
+            raise FileNotFoundError(f"[211] (phrasegen@PPK v{version}) - File does not exist. - {e}")
+    elif wordlist:
+        if not(isinstance(wordlist, list)):
+            raise ValueError(f"[214] (phrasegen@PPK v{version} - Wordlist must be a lists")
+        words = wordlist
     # remove blank lines
     words = [w for w in words if w.strip()]
     
     passphrase = ""
-    for i in range(number):
+    for i in range(length):
         chosen = secrets.choice(words)
         
         passphrase += chosen
         # to prevent delimiter at the end
-        if i != (number-1):
+        if i != (length-1):
             passphrase += delimiter
         
     return passphrase
 
-def entropy(file, chosen=0):
+def entropy(file, length=0):
     try:
         with open(file, "r") as f:
             words = f.read().splitlines()
     except FileNotFoundError as e:
-        raise FileNotFoundError(f"[219] (PPK v{version}) - File does not exist. - {e}")
+        raise FileNotFoundError(f"[219] (phrasegen@PPK v{version}) - File does not exist. - {e}")
     
     # remove blank lines
     words = [w for w in words if w.strip()]
         
-    entropy = chosen * math.log2(len(words))
-    words = ""
+    entropy = length * math.log2(len(words))
     return entropy
