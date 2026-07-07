@@ -31,13 +31,20 @@ def generate(file=None, wordlist=None, length=4, delimiter="-"):
         
     return passphrase
 
-def entropy(file, length=0):
-    try:
-        with open(file, "r") as f:
-            words = f.read().splitlines()
-    except FileNotFoundError as e:
-        raise FileNotFoundError(f"[219] (phrasegen@PPK v{version}) - File does not exist. - {e}")
-    
+def entropy(file=None, wordlist=None, length=0):
+    # open file and read the word on each line
+    if file and wordlist: raise ValueError(f"[212] (phrasegen@PPK v{version} - You must pass EITHER file or wordlist as argument\nBoth have been passed.")
+    if not file and not wordlist: raise ValueError(f"[213] (phrasegen@PPK v{version} - You must pass EITHER file or wordlist as argument\nNeither has been passed.")
+    if file:
+        try:
+            with open(file, "r") as f:
+                words = f.read().splitlines()
+        except FileNotFoundError as e:
+            raise FileNotFoundError(f"[211] (phrasegen@PPK v{version}) - File does not exist. - {e}")
+    elif wordlist:
+        if not(isinstance(wordlist, list)):
+            raise ValueError(f"[214] (phrasegen@PPK v{version} - Wordlist must be a lists")
+        words = wordlist
     # remove blank lines
     words = [w for w in words if w.strip()]
         
