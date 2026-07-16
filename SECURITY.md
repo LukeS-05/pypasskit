@@ -11,6 +11,8 @@ Before using the library in your project, please read the security policy carefu
 | v1.0 | 28 June 2026 | Added the date effective and section 01. |
 | v1.1 | 16 July 2026 | Updated introduction, added sections 05 and 06. |  
 
+You will be notified of updates to this policy through the [project website](https://lukes-05.github.io/pypasskit/features) by clicking the 'Notifications' button.
+
 ### 02 - Reporting a Vulnerability
 > [!WARNING]
 > ### Do not open a public issue.
