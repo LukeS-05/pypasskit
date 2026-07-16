@@ -43,7 +43,7 @@ def wordsList(file=None, wordlist=None):
 def generate(file=None, wordlist=None, length=4, delimiter="-"):
     words = wordsList(file, wordlist)
     
-    passphrase = ""
+    passphrase = "" # nosec 
     for i in range(length):
         chosen = secrets.choice(words)
         
