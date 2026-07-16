@@ -1,12 +1,15 @@
-## Security Policy
-This policy is effective from 28 June 2026. For more information, please read **Section 1 - Updates to Policy**.
+## Security Policy (v1.1)
+PyPassKit is a Python package which generates secure and customisable passwords and passphrases, with zero dependencies.
+
+This policy is effective from 16 July 2026. For more information, please read **01 - Updates**.
 
 Before using the library in your project, please read the security policy carefully.
 
 ### 01 - Updates
-| Date | Changes
-| - | - |
-| 28 June 2026 | Added the date effective and section 01. |
+| V | Date | Changes |
+| :- | :- | :- |
+| v1.0 | 28 June 2026 | Added the date effective and section 01. |
+| v1.1 | 16 July 2026 | Updated introduction, added sections 05 and 06. |  
 
 ### 02 - Reporting a Vulnerability
 > [!WARNING]
@@ -28,3 +31,16 @@ Before reporting a vulnerability, please ensure that you are running the latest 
 > It is **your** responsibility to keep PyPassKit up to date.
 
 Legacy releases will not be supported and will not receive backported patches.
+
+### 05 - Disclaimer
+This library is licensed under the MIT license, and is provided **"AS IS", WITHOUT WARRANTY OF ANY KIND**.
+
+While I do my best to maintain the security and integrity of this library, you use the library at your own risk. I am not liable for data loss, damages or security breaches resulting from its use.
+
+### 06 - Dependencies
+PyPassKit is distributed without any third-party dependencies and will never use external dependencies. This is because security is paramount as opposed to adding more complex features that require additional packages.
+
+This reduces the impact of supply-chain vulnerabilities. Supply chain attacks could compromise the integrity of the project and this has been mitigated by using zero third party dependencies.
+
+### Overview
+By using this library, you accept responsibility for staying up-to-date to reduce the risk of security vulnerabilities. Furthermore, you are aware of how to report a critical security issue if you ever need to.
