@@ -1,3 +1,10 @@
+#  ____  ____  _  __   To learn more about the PyPassKit source code, please go to
+# |  _ \|  _ \| |/ /   https://lukes-05.github.io/pypasskit/source
+# | |_) | |_) | ' /    
+# |  __/|  __/| . \    Copyright (C) 2026 LukeS-05 - This library is licensed under the 
+# |_|   |_|   |_|\_\   MIT License 
+# ______________________________________________________________________________________
+
 import secrets, string, math
 from importlib.metadata import version
 
@@ -58,6 +65,9 @@ def entropy(pool="", length=0):
     if not pool:
         raise ValueError(f"[207] (passgen@PPK v{__version__}) - Your character pool cannot be empty.")
     
+    # 0.7.1 - HANDLED NEGATIVE LENGTHS
+    if length < 0:
+        raise ValueError(f"[208] (passgen@PPK v{__version__}) - Length must not be a negative number.")
     # build pool
     poolsize = len(set(pool))
     entropy = length * math.log2(poolsize)

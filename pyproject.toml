@@ -4,9 +4,18 @@ build-backend = "hatchling.build"
 
 [project]
 name = "pypasskit"
-version = "0.7.0"
+version = "0.7.1"
 description = ""
 readme = "README.md"
 requires-python = ">=3.8"
 dependencies = []
 authors = [{ name = "LukeS-05" }]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pypasskit"]
+
+[tool.hatch.build.targets.wheel.sources]
+"src" = ""
+
+[tool.hatch.build.targets.wheel.force-include]
+"src/pypasskit/eff-words.txt" = "pypasskit/eff-words.txt"
