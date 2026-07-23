@@ -2,8 +2,9 @@
 
 
 ## PyPassKit
-![Latest release](https://img.shields.io/github/v/release/LukeS-05/pypasskit.svg?style=flat)
-![Last commit](https://img.shields.io/github/last-commit/LukeS-05/pypasskit?style=flat)
+![Latest release](https://badgen.net/github/release/LukeS-05/pypasskit)
+![Last commit](https://badgen.net/github/last-commit/LukeS-05/pypasskit)
+![Issues](https://badgen.net/github/issues/LukeS-05/pypasskit)
 
 PyPassKit is a Python package which generates secure and customisable passwords and passphrases.
 
