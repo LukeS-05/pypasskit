@@ -1,4 +1,4 @@
-![](logo.png)
+<img src="logo.png" width="200px" height="200px">
 ## PyPassKit
 PyPassKit is a Python package which generates secure and customisable passwords and passphrases.
 
