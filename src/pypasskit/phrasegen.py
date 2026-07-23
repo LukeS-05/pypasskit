@@ -14,16 +14,17 @@ __all__ = ["generate","entropy"]
 
 # 0.7.1 - NEW WORDSLIST FUNCTION TO REPLACE IDENTICAL CODE IN TWO FUNCTIONS
 def wordsList(file=None, wordlist=None):
-     # open file and read the word on each line
+    # 1 - GENERATE WORDLIST
+    # RULE 1 - IF BOTH ARE PASSED, RAISE VALUEERROR
     if file and wordlist: raise ValueError(f"[212] (phrasegen@PPK v{__version__}) - You must pass EITHER file or wordlist as argument\nBoth have been passed.")
-    # 0.7.1 IF NEITHER -- USE EFF WORD LIST
+    # RULE 2 - IF NEITHER IS PASSED, USE EFF WORDS LIST
     if not file and not wordlist: 
         try:
             with resources.files("pypasskit").joinpath("eff-words.txt").open("r", encoding="utf-8") as f:
                 words = f.read().splitlines()
         except Exception as e:
             raise RuntimeError(f"[219] (phrasegen@PPK v{__version__}) {e}")
-    # IF ONLY FILE - USE FILE
+    # RULE 3 - IF ONLY FILE IS PASSED, USE FILE
     elif file:
         try:
             # 0.7.1 - FIX FOR UnicodeDecodeError
@@ -31,16 +32,19 @@ def wordsList(file=None, wordlist=None):
                 words = f.read().splitlines()
         except FileNotFoundError as e:
             raise FileNotFoundError(f"[211] (phrasegen@PPK v{__version__}) - File does not exist. - {e}")
-    # IF ONLY WORD LIST - USE WORD LIST
+    # RULE 4 - IF ONLY WORD LIST IS PASSED, USE WORD LIST
     elif wordlist:
         if not(isinstance(wordlist, list)):
             raise ValueError(f"[214] (phrasegen@PPK v{__version__}) - Wordlist must be a lists")
         words = wordlist
-    # remove blank lines
+    # 2 - REMOVE SPACES FROM WORD LIST
     words = [w for w in words if w.strip()]
+
+    # 3 - RETURN WORDS
     return words
 
 def generate(file=None, wordlist=None, length=4, delimiter="-"):
+    # 1 - GENERATE WORDSLIST
     words = wordsList(file, wordlist)
     
     passphrase = "" # nosec 

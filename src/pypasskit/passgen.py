@@ -12,63 +12,73 @@ __version__ = version("pypasskit")
 __all__ = ["generate", "buildPool", "entropy"]
 
 def buildPool(upper=True, lower=True, numbers=True, symbols=True):
+    # 1 - CHECK BOOLEAN VALUES HAVE BEEN PASSED
     if not(isinstance(upper, bool)) or not(isinstance(lower, bool)) or not(isinstance(numbers, bool)) or not(isinstance(symbols, bool)):
         raise TypeError(f"[201] (passgen@PPK v{__version__}) - Character pool config (e.g. upper) must be given as booleans.")
+
+    # 2 - INITIALISE CHARACTERS VARIABLE
     characters = ""
-    if upper:
-        characters += string.ascii_uppercase
-    if lower:
-        characters += string.ascii_lowercase
-    if numbers:
-        characters += string.digits
-    if symbols:
-        characters += string.punctuation
+
+    # 3 - APPEND TO POOL
+    if upper: characters += string.ascii_uppercase
+    if lower: characters += string.ascii_lowercase
+    if numbers: characters += string.digits
+    if symbols: characters += string.punctuation
+
+    # 4 - RETURN POOL
     return characters
 
 def generate(upper=True, lower=True, numbers=True, symbols=True, length=10, returnPool=False):
-    # check data types
-    if not(isinstance(length, int)):
-        raise TypeError(f"[202] (passgen@PPK v{__version__}) - Password length must be given as an integer.")
-    # generate char pool
+    # 1 - DATA TYPE VALIDATION
+    if not(isinstance(length, int)): raise TypeError(f"[202] (passgen@PPK v{__version__}) - Password length must be given as an integer.")
+    # 2 - BUILD CHARACTER POOL
     characters = buildPool(upper, lower, numbers, symbols)
     selected = sum([upper, lower, numbers, symbols])
     
-    # check pass length and categories
-    if length < selected:
-        raise ValueError(f"[203] (passgen@PPK v{__version__}) - Length must be greater than or equal to the number of character types selected ({selected}).")
-    if selected == 0:
-        raise ValueError(f"[204] (passgen@PPK v{__version__}) - You must select at least one type of character.")
-    
+    # 3 - VALIDATE LENGTH AND SELECTED CATEGORIES
+    if length < selected: raise ValueError(f"[203] (passgen@PPK v{__version__}) - Length must be greater than or equal to the number of character types selected ({selected}).")
+    if selected == 0: raise ValueError(f"[204] (passgen@PPK v{__version__}) - You must select at least one type of character.")
+
+    # 4 - INITIALISE CHARSLIST
     charslist = []
-    # ensure that there is at least one of the characters from each category chosen
+
+    # 5 - GUARANTEE EACH CHARACTER TYPE APPEARS IN THE PASSWORD
     if upper: charslist.append(secrets.choice(string.ascii_uppercase))
     if lower: charslist.append(secrets.choice(string.ascii_lowercase))
     if numbers: charslist.append(secrets.choice(string.digits))
     if symbols: charslist.append(secrets.choice(string.punctuation))
 
-    # choose each character
+    # 6 - CHOOSE EACH CHARACTER
     while len(charslist) < length:
         # use secrets module to choose from character pool
         charslist.append(secrets.choice(characters))
-    
+
+    # 7 - SHUFFLE PASSWORD SO REQUIRED CHARS AREN'T ALWAYS AT BEGINNING (i.e. Aa1@)
     secrets.SystemRandom().shuffle(charslist)
     password = "".join(charslist)
 
-    # return pool if requested, return password in all cases
+    # 8 - RETURN PASSWORD (AND POOL if returnPool)
     if returnPool: return password, characters
     return password
 
 def entropy(pool="", length=0):
+    # 1 - DATA TYPE VALIDATION
     if not(isinstance(length, int)):
         raise TypeError(f"[206] (passgen@PPK v{__version__}) - Password length must be given as an integer.")
-    
+
+    # 2 - CHECK POOL HAS BEEN PASSED
     if not pool:
         raise ValueError(f"[207] (passgen@PPK v{__version__}) - Your character pool cannot be empty.")
     
-    # 0.7.1 - HANDLED NEGATIVE LENGTHS
+    # 3 - HANDLED NEGATIVE LENGTHS (0.7.1)
     if length < 0:
         raise ValueError(f"[208] (passgen@PPK v{__version__}) - Length must not be a negative number.")
-    # build pool
+
+    # 4 - EXCLUDE DUPLICATE CHARS TO ENSURE ENTROPY IS ACCURATE
     poolsize = len(set(pool))
+
+    # 5 - CALCULATE ENTROPY
     entropy = length * math.log2(poolsize)
+
+    # 6 - RETURN ENTROPY
     return entropy
