@@ -1,4 +1,6 @@
-<img src="logo.png" width="200px" height="200px">
+<img src="logo.png" width="100px" height="100px">
+
+
 ## PyPassKit
 PyPassKit is a Python package which generates secure and customisable passwords and passphrases.
 
