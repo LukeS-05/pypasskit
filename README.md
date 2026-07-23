@@ -1,3 +1,4 @@
+![](logo.png)
 ## PyPassKit
 PyPassKit is a Python package which generates secure and customisable passwords and passphrases.
 
