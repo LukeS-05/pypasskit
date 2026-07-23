@@ -19,10 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
----
-This project includes the "eff-words.txt" wordlist, which is sourced from the 
-Electronic Frontier Foundation (EFF) and used under the Creative Commons 
-Attribution 3.0 (CC-BY 3.0) license.
-
-The original list was modified to remove the numerical prefixes.
