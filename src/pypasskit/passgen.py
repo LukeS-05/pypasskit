@@ -65,6 +65,8 @@ def entropy(pool="", length=0):
     # 1 - DATA TYPE VALIDATION
     if not(isinstance(length, int)):
         raise TypeError(f"[206] (passgen@PPK v{__version__}) - Password length must be given as an integer.")
+    if not(isinstance(pool, str)):
+        raise TypeError(f"[209] (passgen@PPK v{__version__}) - Character pool must be given as a string.")
 
     # 2 - CHECK POOL HAS BEEN PASSED
     if not pool:
