@@ -14,18 +14,18 @@ assignees: LukeS-05
 > A clear and concise description of what the bug is.
 
 **Component / Module**
-Which part of the toolkit is affected? (Check all that apply)
-- [ ] `pypasskit.password`
-- [ ] `pypasskit.passphrase`
-- [ ] `pypasskit.pin`
-- [ ] Other / Installation issue
+Which part of the library is affected? (Check all that apply)
+- [] `ppk.passgen`
+- [] `ppk.phrasegen`
+- [] `ppk.pingen`
+- [] Other / Installation issue
 
 **To Reproduce**
 > Please provide a minimal code snippet or steps to reproduce the behavior:
 
 ```python
 # Copy and paste your code here if applicable
-import pypasskit
+import pypasskit as ppk
 ```
 **Expected behavior**
 > A clear and concise description of what you expected to happen.
